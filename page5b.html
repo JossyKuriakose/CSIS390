@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Path of Stealth</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="container">
+        <form action="page6.html" id="characterForm" type="get">
+            <h1>The Path of Stealth</h1>
+            <p><strong>To successfully navigate the Path of Stealth, you must choose your actions carefully. Select the
+                    correct sequence of actions to avoid detection and reach your objective.</strong></p>
+            <!-- Actions -->
+            <div onclick="selectAction('hide')" class="stealth-option"><strong>Hide in the shadows</strong></div>
+            <div onclick="selectAction('run')" class="stealth-option"><strong>Run quickly to the next cover</strong>
+            </div>
+            <div onclick="selectAction('distract')" class="stealth-option"><strong>Create a distraction</strong></div>
+            <div onclick="selectAction('stealth')" class="stealth-option"><strong>Wait for the right moment</strong>
+            </div>
+            <!-- Buttons -->
+            <button onclick="checkSequence()" id="check"><strong>Check Sequence</strong></button>
+            <button onclick="reset()" id="reset"><strong>Reset!</strong></button>
+            <script>
+                document.querySelectorAll("div").forEach(div => {
+                    div.addEventListener("mousedown", function (event) {
+                        div.style.backgroundColor = "orange";
+                    });
+                });
+                document.getElementById("reset").addEventListener("click", function (event) {
+                    document.querySelectorAll("div").forEach(div => {
+                        div.style.backgroundColor = "";
+                    })
+                    event.preventDefault();
+                    window.location.href = "page5b.html";
+                });
+
+                const correctSequence = ['hide', 'wait', 'distract'];
+                const currentSequence = [];
+                document.getElementById("check").addEventListener("click", function (event) {
+                    currentSequence = [];
+                    document.querySelectorAll("div").forEach(div => {
+                        currentSequence.push(div.innerHTML);
+                    });
+                    function areArraysEqual(arr1, arr2) {
+                        if (arr1.length !== arr2.length) return false;
+                        return arr1.every((value, index) => value === arr2[index]);
+                    }
+
+                    console.log("Correct sequence:", correctSequence);
+                    console.log("User sequence:", currentSequence);
+
+                    if (areArrayEqual(correctSequence, currentSequence)) {
+                        event.preventDefault();
+                        window.location.href = "page6.html";
+                    }
+                    else {
+                        alert("Incorrect sequence. Try again!");
+                    }
+                });
+            </script>
+        </form>
+    </section>
+</body>
+
+</html>

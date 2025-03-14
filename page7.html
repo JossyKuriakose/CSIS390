@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conclusion</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+         #textArea{
+            width: 400px;
+            height: 50px;
+         }
+         .oneLine{
+            display: flex;
+            flex-direction: row;
+         }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <h1>Your Quest Has Concluded</h1>
+        <p><strong>Based on your choices, [Insert a dynamic conclusion based on the user's journey and final decision]. The kingdom will remember your deeds for generations to come.</strong></p>
+        <p><strong>We hope you enjoyed your adventure. Would you like to provide feedback on your experience?</strong></p>
+        <div class = "oneLine">
+        <label><strong>Your Feedback:</strong></label>
+        <input type="text" id = "textArea">
+        </div>
+        <input type="submit" value="Submit Feedback">
+        <br>
+        <input type="submit" value="Play Again" id = "playAgain">
+        <p><strong>I am sincerely thankful for my mom. Thank you for your hard work as a nurse which not only provides for my family but also so many other people in need.</strong></p>
+    </section>
+    <script>
+        document.getElementById("playAgain").addEventListener("click", function(event){
+            window.location.href = "welcome.html";
+        });
+    </script>
+</body>
+</html>

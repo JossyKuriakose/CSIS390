@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The First Obstacle</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        #answer{
+            border-color: yellow;
+            border-radius: 4px;
+        }
+
+    </style>
+</head>
+    
+<body>
+    <section class="container">
+        <form action="page5.html" id="characterForm" type="get">
+            
+            <h1>The First Obstacle</h1>
+            <p><strong>As you venture deeper into the Dark Forest, you encounter a mystical guardian. The guard blocks
+                    you path and poses a riddle:</strong></p>
+            <p><strong>"I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?"</strong></p>
+            <label for = "answer"><strong>Your answer:</strong></label>
+            <input type="text" id = "answer" name = "selection" value = "answer">
+            <input type="submit" value="Submit Answer" id = "submitButton">
+
+            <p><strong>Think carefully, for the correct answer will allow you passage.</strong></p>
+        </form>
+    </section>
+    <script>
+        let answerInput = document.getElementById("answer");
+        let submitButton = document.getElementById("submitButton");
+        let correctAnswer = "echo";
+
+        function changeButtonColor() {
+            let userAnswer = answerInput.value.trim().toLowerCase();
+
+            if (userAnswer === correctAnswer) {
+                submitButton.style.backgroundColor = "green";
+                submitButton.disabled = false;
+            } else {
+                submitButton.style.backgroundColor = "red";
+                submitButton.disabled = true;
+            }
+        }
+        answerInput.addEventListener("input", changeButtonColor);
+        document.getElementById("characterForm").addEventListener("submit", function (event) {
+            let userAnswer = answerInput.value.trim().toLowerCase();
+            if (userAnswer !== correctAnswer) {
+                event.preventDefault();  // Prevent form submission
+                alert("Incorrect answer! Please try again.");
+            }
+        });
+    </script>
+</body>
+
+</html>

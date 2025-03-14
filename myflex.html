@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox Fun</title>
+    <style>
+        /* Additional styles for fun */
+        .red {
+            background: tomato;
+        }
+
+        .blue {
+            background: dodgerblue;
+        }
+
+        .green {
+            background: mediumseagreen;
+        }
+
+        .orange {
+            background: orange;
+        }
+
+        .purple {
+            background: rebeccapurple;
+        }
+
+        .flex-itemred {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            background-color: tomato;
+        }
+
+        .flex-itemblue {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            background-color: dodgerblue;
+        }
+
+        .flex-itemgreen {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            background-color: mediumseagreen;
+        }
+
+        .flex-itemorange {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            background-color: orange;
+        }
+
+        .flex-itempurple {
+            width: 100px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            background-color: rebeccapurple;
+        }
+
+        .flex-container {
+            height: 140px;
+            background-color: lightgray;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        @media (min-width: 600px) {
+            .flex-container {
+                color: gray;
+            }
+
+            nav {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                /* Stack logo & menu items */
+                background-color: #333;
+                color: white;
+
+                /* Center everything */
+                padding: 20px 0;
+                /* Add padding for spacing */
+                list-style: none;
+            }
+
+            nav div {
+                font-size: 24px;
+                display: flex;
+                flex-direction: column;
+                margin-left: 24px;
+            }
+
+            nav li{
+                display: flex;
+                flex-direction: column;
+            }
+
+        }
+
+        @media (min-width: 900px) {
+            .flex-container {
+                color: purple;
+            }
+        }
+
+        nav {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            background-color: #333;
+            color: white;
+        }
+
+        nav div {
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: 24px;
+        }
+
+        nav ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <h1>FlexBox practice</h1>
+        <nav>
+            <div><strong>Logo</strong></div>
+            <ul>
+                <li>Home</li>
+                <li>About</li>
+                <li>Services</li>
+                <li>Contract</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="flex-container">
+            <div class="flex-itemred">1</div>
+            <div class="flex-itemblue">1</div>
+            <div class="flex-itemgreen">1</div>
+            <div class="flex-itemorange">1</div>
+            <div class="flex-itempurple">1</div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Do we need this?</p>
+    </footer>
+
+</body>
+
+</html>

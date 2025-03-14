@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Journey Continues</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <section class="container">
+        <form action="page6.html" id="characterForm" type="get">
+            <h1>The Journey Continues</h1>
+            <p><strong>With the guardian's riddle behind you, the path forward splits into three. Each route is known to
+                    favor certain traits: strength, wisdom, or stealth. Choose you path wisely, as it will influence the
+                    challenges you face ahead.</strong></p>
+            <label for="challenge"><strong>Choose your path:</strong></label>
+            <select name="challenge" id="challenge">
+                <option value="option" selected><strong>--Please select an option--</strong></option>
+                <option value="Strength"><strong>Strength</strong></option>
+                <option value="Wisdom"><strong>Wisdom</strong></option>
+                <option value="Stealth"><strong>Stealth</strong></option>
+            </select>
+            <input type="submit" value="Continue on your journey" id="submitButton">
+            <p><strong>Your choice will not only test your abilities but also reveal deeper truths about your
+                    character.</strong></p>
+        </form>
+    </section>
+    <script>
+
+        document.getElementById("characterForm").addEventListener("change", function (event) {
+            let selectedValue = document.getElementById("challenge").value;
+            if (selectedValue === "option") {
+                document.body.style.backgroundColor = "red";
+            }
+            else if (selectedValue === "Stealth") {
+                document.body.style.backgroundColor = "lightblue";
+            }
+            else if (selectedValue === "Wisdom") {
+                document.body.style.backgroundColor = "yellow";
+            }
+            else {
+                document.body.style.backgroundColor = "lightgreen";
+            }
+        });
+        document.getElementById("characterForm").addEventListener("submit", function (event) {
+
+            let selectedValue = document.getElementById("challenge").value;
+            let submitButton = document.getElementById("submitButton");
+
+
+            if (selectedValue === "option") {
+                event.preventDefault();
+                alert("Select another answer besides the default.");
+                return;
+            }
+
+            event.preventDefault();
+            if (selectedValue === "Stealth") {
+                window.location.href = "page5b.html";
+            }
+            else {
+                window.location.href = "page6.html";
+            }
+        });
+    </script>
+</body>
+
+</html>
