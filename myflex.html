@@ -86,14 +86,13 @@
             justify-content: space-around;
         }
 
-        @media (min-width: 600px) {
+        @media (max-width: 600px) {
             .flex-container {
                 color: gray;
             }
 
             nav {
                 display: flex;
-                flex-direction: column;
                 justify-content: space-between;
                 /* Stack logo & menu items */
                 background-color: #333;
@@ -108,13 +107,18 @@
             nav div {
                 font-size: 24px;
                 display: flex;
-                flex-direction: column;
+                flex-direction: row;
                 margin-left: 24px;
             }
 
-            nav li{
-                display: flex;
+            nav ul {
                 flex-direction: column;
+                /* Turns into a column layout */
+                text-align: center;
+                /* Center the menu items */
+                padding: 0;
+                margin: 0;
+                width: 100%;
             }
 
         }

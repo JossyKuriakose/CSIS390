@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Timer</title>
+    </head>
+
+    <body>
+      <button id = "startButton">Start</button>
+      <button id = "endButton">End</button>
+    </body>
+    <script>
+        let startTime;
+        let timerInterval;
+      
+        const startBtn = document.getElementById("startButton");
+        const endBtn = document.getElementById("endButton");
+        const timerDisplay = document.getElementById("timerDisplay");
+      
+        startBtn.addEventListener("click", () => {
+          startTime = Date.now();
+          timerDisplay.textContent = "0 seconds";
+          clearInterval(timerInterval);
+      
+          timerInterval = setInterval(() => {
+            const elapsedSeconds = Math.floor((Date.now() - startTime) / 1000);
+            timerDisplay.textContent = elapsedSeconds;
+          }, 1000);
+        });
+      
+        endBtn.addEventListener("click", () => {
+          clearInterval(timerInterval);
+        });
+      </script>
+      
+</html>

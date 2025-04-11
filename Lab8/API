@@ -1,0 +1,20 @@
+{
+	"url": "https://room8.com/api/Home/583",
+    "Nav Bar": "Home",
+    "Nav Bar":"Help",
+    "Nav Bar": "Search",
+    "Nav Bar": "Saved",
+
+	"title": [
+		"Room8"
+	],
+	"About": [
+		"This app helps you find a roommate in the most convenient way possible." ,
+        "It reduces the hassle of finding a roomate.",
+        "You can select roomates based on qualities and preferences you like"
+	],
+	"Log In": "Log In",
+	"Sign Up": "Sign Up",
+	"Connect With": "Apple, Meta, Google"
+	
+}

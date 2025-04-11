@@ -1,0 +1,28 @@
+{
+	"url": "https://room8.com/api/Hlep/583",
+    "Nav Bar": "Home",
+    "Nav Bar":"Help",
+    "Nav Bar": "Search",
+    "Nav Bar": "Saved",
+
+	"Question1": [
+		"What to do if I have trouble logging in?",
+        "Click Forgot Password or call customer service"
+	],
+    "Question2":[
+        "Why can't I find a good match?",
+        "You might want to reconsider adjusting your preferences and priorities."
+    ],
+    "Question3":[
+        "What to do if there are glitches on the app?",
+        "Call customer service"
+    ],    
+    "Question4":[
+        "Why to do if the person you match with doesn't get back to you?",
+        "Leave the individual a message telling them that they should get back to them soon or else you will no longer consider them."
+    ],
+    "Other Questions":[
+        "If you have any other questions, please call customer service."
+    ]
+	
+}
