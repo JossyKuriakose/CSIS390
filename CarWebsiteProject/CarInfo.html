@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
 </head>
 
@@ -13,18 +15,20 @@
 </nav>
 <body>
     <div>
-        <button>Back</button>
+        <button id = "back">Back</button>
     </div>
     <div>
-        <button>Next</button>
+        <button id = "next">Next</button>
     </div>
 
-    <div>
+    <div id = "price">
     <h1>Price</h1>
+
     <label>Min:</label>
-    <input type = "text">
+    <input type = "text" id = "low" name = "low">
+
     <label>Max:</label>
-    <input type = "text">
+    <input type = "text" id = "high" name = "high">
     </div>
 
     <div>
@@ -50,6 +54,23 @@
     <button>2023</button>
     <button>2024</button>
     </div>
+
+    <div>
+    <input type="checkbox" id="vehicle1" name="vehicle1" value="brand">
+    <label for="vehicle1">Honda</label><br>
+    <input type="checkbox" id="vehicle2" name="vehicle2" value="brand">
+    <label for="vehicle2">Toyota</label><br>
+    <input type="checkbox" id="vehicle3" name="vehicle3" value="brand">
+    <label for="vehicle3">Ford</label><br>
+    <input type="checkbox" id="vehicle1" name="vehicle1" value="brand">
+    <label for="vehicle1">BMW</label><br>
+    <input type="checkbox" id="vehicle2" name="vehicle2" value="brand">
+    <label for="vehicle2">Mercedes Benz</label><br>
+    <input type="checkbox" id="vehicle3" name="vehicle3" value="brand">
+    <label for="vehicle3">Subaru</label><br>
+    </div>
+
+    <option></option>
 </body>
 <form>
 

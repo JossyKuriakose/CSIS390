@@ -60,7 +60,7 @@ function validateForm() {
     // If both are valid, submit the form
     if (isValid) {
         console.log("Form is valid! Submitting...");
-        
+       
     }
 }
 

@@ -1,6 +1,7 @@
 document.getElementById("checkForm").addEventListener("submit", function (e) {
     e.preventDefault(); // Stop the form from submitting automatically
     validateForm(); // Call the validation function
+    requestMenu();
 });
 
 function validateName(name) {
@@ -99,3 +100,21 @@ function validateForm() {
     }
 }
 
+function requestMenu() {
+    let API_URL = "https://webhook-test.com/3e35cc2dc6a63cd943950ae8f81081d0";
+    let data = new FormData();
+    data.append("key1", "value1"); // repeat for as many params as necessary
+    data.append("key2", "value2");
+  
+    fetch(API_URL, {method: "POST", body: data})
+      .then(statusCheck)
+      .then(resp => resp.text()) // or res.text() based on response
+      .catch(handleError);
+  }
+  
+async function statusCheck(res) {
+      if(!res.ok){
+        throw new Error(await res.text());
+      }
+      return res;
+}
