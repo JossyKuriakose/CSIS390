@@ -1,30 +1,68 @@
 <!DOCTYPE html>
 <html>
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Home Page</title>
 
-       <style>
-        
-       </style>
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link href="https://getbootstrap.com/docs/5.3/components/navbar/" rel="stylesheet">
+  <link rel="stylesheet" href="universal.css">
+  <style>
 
-    <nav>
-      <ul>
-          <li>Home</li>
-          <li>About</li>
-      </ul>
-    </nav>
+    h1 {
+      display: flex;
+      justify-content: center;
+      padding-top: 150px;
+      margin-right: 55px;
+      font-size: 50px;
+      /* color:rgb(239, 122, 39); */
+      color: rgb(252, 229, 192);
+    }
 
-    <body>
-      <h1>CarLord</h1>
+    #buttons {
+      display: flex;
+      text-align: center;
+      justify-content: space-around;
+      padding-top: 20px;
+    }
 
-      <button>Buy A Car</button>
-      <button>Sell A Car</button>
-      <button>Just Look For A Car!</button>
-    </body>
-    <form>
+    button {
+      background-color: blue;
+      color: white;
+      width: 150px;
+      height: 50px;
+      font-size: large;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(211, 211, 211, 1);
+    }
 
-    </form>
+    #special {
+      width: 200px;
+    }
+
+    button:hover {
+      background-color: burlywood;
+    }
+  </style>
+</head>
+
+<nav>
+  <ul>
+    <li><a href="Home.html" class="invisible-link">Home</a></li>
+    <li><a href="About.html" class="invisible-link">About</a></li>
+    <li><a href="Saved.html" class="invisible-link">Saved</a></li>
+  </ul>
+</nav>
+
+<body>
+  <h1><strong>CarWizard</strong></h1>
+
+  <body style="background-image: url('carlot.jpg');">
+    <div id="buttons">
+      <button onclick="window.location.href='Selection.html'"><strong>Buy A Car</strong></button>
+      <button onclick="window.location.href='SellPage.html'"><strong>Sell A Car</strong></button>
+      <button onclick="window.location.href='Search.html'" id="special"><strong>Just Look For A Car!</strong></button>
+    </div>
+  </body>
+
 </html>

@@ -1,44 +1,338 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Home Page</title>
 
-       <style>
+<head>
 
-       </style>
-    </head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="universal.css">
+    <title>Home Page</title>
 
+    <style>
+        .backandForth {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            padding-top: 35px;
+            padding-bottom: 35px;
+        }
+
+        h1 {
+            display: flex;
+            justify-content: center;
+            padding-top: 35px;
+            color: #f1f1f1;
+            font-weight: 300;
+        }
+
+        p {
+            padding-top: 35px;
+            display: flex;
+            justify-content: center;
+            color: white;
+        }
+
+        label {
+            color: tan;
+            font-weight: 500;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            width: 170px;
+            height: 50px;
+            font-size: large;
+            border-radius: 30px;
+        }
+
+        button:hover {
+            background-color: burlywood;
+        }
+
+        .carTypes {
+            padding-top: 35px;
+            margin-right: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px 24px;
+            align-items: center;
+            padding-left: 150px;
+            padding-top: 30px;
+        }
+
+        .year {
+            padding-top: 35px;
+        }
+
+        #price {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        #branded {
+            padding: 20px;
+            font-family: sans-serif;
+        }
+
+        #branded h1 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        #brand {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            /* 2 equal columns */
+            gap: 12px 24px;
+            /* row and column gap */
+            align-items: center;
+            padding-left: 150px;
+            padding-top: 30px;
+            border: 4px solid #f1f1f1;
+            margin-left: 300px;
+            margin-right: 300px;
+        }
+
+        #brand label {
+            font-size: 20px;
+            margin-left: 8px;
+            cursor: pointer;
+        }
+
+        #brand input[type="checkbox"] {
+            transform: scale(1.3);
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .brand-item {
+            display: flex;
+            align-items: center;
+            padding-bottom: 30px;
+        }
+
+        body {
+            background-image: url('autoshow.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        #scroll-progress {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 10px;
+            background-color: gold;
+            /* Bootstrap primary blue */
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.2s ease-out;
+        }
+
+        input {
+            border-radius: 30px;
+        }
+
+        .year {
+            padding-left: 50px;
+        }
+
+        .year button {
+            margin: 10px;
+        }
+
+        #searchBar {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        #searchBar section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .back {
+            padding-top: 100px;
+            padding-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
     <nav>
         <ul>
-            <li>Home</li>
-            <li>About</li>
+            <li><a href="Home.html" class="invisible-link">Home</a></li>
+            <li><a href="About.html" class="invisible-link">About</a></li>
+            <li><a href="Saved.html" class="invisible-link">Saved</a></li>
         </ul>
     </nav>
-    <body>
-        <div>
-            <button>Back</button>
+
+    <div class="back">
+        <button onclick="window.location.href='Home.html'">&lt; Back</button>
+    </div>
+
+    <h1 style="padding-top: 0px;">Select the type of car you want</h1>
+
+    <div id="scroll-progress"></div>
+
+    <div id="searchBar">
+        <section>
+            <input type="text" placeholder="Search, Make, Model, or Year" style="width: 300px; height:45px;" id="input">
+            <span id="inputError" class="error" style="color: red; font-size: 14px;"></span>
+        </section>
+        <button id="searchBtn">Go!</button>
+    </div>
+
+    <p style="font-size: 25px;">------------------------------- or -------------------------------</p>
+
+    <h1>Select the Type:</h1>
+    <div class="carTypes">
+        <button id="cartypebutton">SUV's</button>
+        <button id="cartypebutton">Sedans</button>
+        <button id="cartypebutton">Trucks</button>
+        <button id="cartypebutton">Hatchbacks</button>
+        <button id="cartypebutton">Stationwagons</button>
+        <button id="cartypebutton">Coupes</button>
+        <button id="cartypebutton">Sports Cars</button>
+        <button id="cartypebutton">Luxury Cars</button>
+        <button id="cartypebutton">Minivans</button>
+        <button id="cartypebutton">Vans</button>
+    </div>
+
+    <div class="year">
+        <h1>Year</h1>
+        <button>2005</button>
+        <button>2006</button>
+        <button>2007</button>
+        <button>2008</button>
+        <button>2009</button>
+        <button>2010</button>
+        <button>2011</button>
+        <button>2012</button>
+        <button>2013</button>
+        <button>2014</button>
+        <button>2015</button>
+        <button>2016</button>
+        <button>2017</button>
+        <button>2018</button>
+        <button>2019</button>
+        <button>2020</button>
+        <button>2021</button>
+        <button>2022</button>
+        <button>2023</button>
+        <button>2024</button>
+    </div>
+
+    <article id="branded">
+        <h1>Car Brand</h1>
+        <div id="brand">
+            <div class="brand-item">
+                <input type="checkbox" id="honda" name="brand" value="Honda">
+                <label for="honda">Honda</label>
+            </div>
+            <div class="brand-item">
+                <input type="checkbox" id="toyota" name="brand" value="Toyota">
+                <label for="toyota">Toyota</label>
+            </div>
+            <div class="brand-item">
+                <input type="checkbox" id="ford" name="brand" value="Ford">
+                <label for="ford">Ford</label>
+            </div>
+            <div class="brand-item">
+                <input type="checkbox" id="bmw" name="brand" value="BMW">
+                <label for="bmw">BMW</label>
+            </div>
+            <div class="brand-item">
+                <input type="checkbox" id="mercedes" name="brand" value="Mercedes Benz">
+                <label for="mercedes">Mercedes Benz</label>
+            </div>
+            <div class="brand-item">
+                <input type="checkbox" id="subaru" name="brand" value="Subaru">
+                <label for="subaru">Subaru</label>
+            </div>
         </div>
-        <div>
-            <button>Next</button>
-        </div>
-        <div>
-            <input type = "text" placeholder="Search, Make, Model, or Year">
-            <button>Go!</button>
-        </div>
-        <p>------------------- or -------------------------------</p>
-        <div>
-            <button>SUV's</button>
-            <button>Sedans</button>
-            <button>Trucks</button>
-            <button>Hatchbacks</button>
-            <button>Stationwagons</button>
-            <button>Coupes</button>
-            <button>Sports Cars</button>
-            <button>Luxury Cars</button>
-            <button>Minivans</button>
-            <button>Vans</button>
-        </div>
-    </body>
+    </article>
+    <h1>Price</h1>
+    <div id="price">
+        <label style="font-size: 30px;">Min:</label>
+        <input type="text" id="MinCarPrice" name="low" style="width: 150px;" required>
+
+        <label style="font-size: 30px;">Max:</label>
+        <input type="text" id="MaxCarPrice" name="high" style="width: 150px;" required>
+    </div>
+    <span id="priceError" class="error" style="color: red; font-size: 14px;"></span>
+
+    <div class="backandForth">
+        <button onclick="window.location.href='Home.html'">&lt; Back</button>
+        <button onclick="window.location.href='CarPage.html'">Next &gt;</button>
+    </div>
+</body>
+
+<script>
+    window.addEventListener('scroll', function () {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+    });
+
+    document.getElementById("searchBtn").addEventListener("click", function (e) {
+        e.preventDefault(); // prevent page from navigating by default
+
+        const inputField = document.getElementById("input");
+        const errorDisplay = document.getElementById("inputError");
+        errorDisplay.style.fontSize = "23px";
+        const value = inputField.value.trim();
+
+        // Match format: 4-digit year + space + approved make + space + model (at least 1 character)
+        const regex = /^(200\d|201\d|202[0-4])\s(Honda|Toyota|Ford|BMW|Mercedes Benz|Subaru)\s[A-Za-z0-9\-]+$/;
+        if (!value) {
+            errorDisplay.textContent = "Please type something.";
+        } else if (!regex.test(value)) {
+            errorDisplay.textContent = "Please enter in format: YYYY Make Model (e.g., 2020 Honda Civic)";
+        } else {
+            errorDisplay.textContent = "";
+            window.location.href = 'CarPage.html';
+        }
+    });
+
+    document.querySelectorAll("button").forEach(button => {
+        button.addEventListener("click", () => {
+            if (button.style.backgroundColor === "red") {
+                button.style.backgroundColor = "blue"; // Reset to default
+            } else {
+                button.style.backgroundColor = "red"; // Change to red
+            }
+        });
+    });
+
+    document.getElementById("MaxCarPrice").addEventListener("input", function () {
+        const maxPrice = document.getElementById("MaxCarPrice").value.trim();
+        const minPrice = document.getElementById("MinCarPrice").value.trim();
+        const errorDisplay = document.getElementById("priceError").value.trim();
+        errorDisplay.style.fontSize = "23px";
+        errorDisplay.style.paddingLeft = "390px";
+
+        if (minPrice !== "" && maxPrice !== "") {
+            const min = parseFloat(minPrice);
+            const max = parseFloat(maxPrice);
+
+            if (min > max) {
+                errorDisplay.textContent = "The minimum price can't be greater than the maximum price.";
+            } else {
+                errorDisplay.textContent = "";
+            }
+        } else {
+            errorDisplay.textContent = ""; // Clear if one is empty
+        }
+    });
+</script>
+
 </html>

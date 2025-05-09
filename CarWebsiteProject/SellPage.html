@@ -1,39 +1,279 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sell A Car</title>
-    </head>
 
-    <nav>
-        <ul>
-            <li>Home</li>
-            <li>About</li>
-        </ul>
-    </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://getbootstrap.com/docs/5.3/components/navbar/" rel="stylesheet">
+    <link rel="stylesheet" href="universal.css">
+    <title>Sell A Car</title>
+    <style>
+        #buttons {
+            display: flex;
+            text-align: center;
+            justify-content: space-around;
+            padding-top: 20px;
+        }
 
-    <body>
-        <div>
-            <button id = "back">Back</button>
-        </div>
-        <h1>Sell A Car!</h1>
+        button {
+            background-color: blue;
+            color: white;
+            width: 150px;
+            height: 50px;
+            font-size: large;
+            border-radius: 25px;
+            margin-left: 10px;
+        }
 
-    <!-- add code to download photo here  -->
+        button:hover {
+            background-color: burlywood;
+        }
 
-        <label>Model:</label>
-        <input type = "text" id="model" name="model">
+        article {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            gap: 10px;
+        }
 
-        <label>Make:</label>
-        <input type = "text" id="make" name="make">
+        .submit {
+            width: 60px;
+            height: 30px;
+        }
 
-        <label>Year:</label>
-        <input type = "text" id="year" name="year">
+        h1 {
+            display: flex;
+            justify-content: center;
+        }
 
-        <label>Description:</label>
-        <input type = "text" id="describe" name="describe">
-        
-        <button type = "submit" value = "submit">Post</button>
-    
-    </body>
+        #back {
+            margin-top: 75px;
+        }
+
+        section {
+            width: 400px;
+            height: 400px;
+            margin-left: 420px;
+            border: 4px solid black;
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            gap: -5px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<nav>
+    <ul>
+        <li><a href="Home.html" class="invisible-link">Home</a></li>
+        <li><a href="About.html" class="invisible-link">About</a></li>
+        <li><a href="Saved.html" class="invisible-link">Saved</a></li>
+    </ul>
+</nav>
+
+<body style="background-image:url('sale.jpg'); background-size: cover; 
+             background-repeat: no-repeat; background-position: center; margin: 0; height: 120vh;">
+    <div>
+        <button onclick="window.location.href='Home.html'" id="back">&lt; Back</button>
+    </div>
+    <h1>Sell A Car!</h1>
+    <section>
+        <form>
+            <article>
+
+                <div>
+                    <label>Model:</label>
+                    <input type="text" id="model" name="model">
+                    <span id="modelError" class="error"></span>
+                </div>
+
+                <div>
+                    <label>Make:</label>
+                    <input type="text" id="make" name="make">
+                    <span id="makeError" class="error"></span>
+                </div>
+
+                <div>
+                    <label>Year:</label>
+                    <input type="text" id="year" name="year">
+                    <span id="yearError" class="error"></span>
+                </div>
+
+                <div>
+                    <label>Vehicle Identification Number:</label>
+                    <input type="text" id="vin" name="VIN">
+                    <span id="vinError" class="error"></span>
+                </div>
+
+                <div>
+                    <label>Description:</label>
+                    <input type="text" id="describe" name="describe">
+                    <span id="jobError" class="error"></span>
+                </div>
+
+                <button type="submit" value="submit" class="submit">Post</button>
+                <aside></aside>
+            </article>
+        </form>
+        <article>
+            <img src="sellcar.jpg" alt="sale" style="width:200px; height:150px">
+        </article>
+    </section>
+
+    <script>
+        /**
+         * Handles form submission: validates form, sends a request if valid, and shows a message.
+         * 
+         * @param {Event} e - The form submission event.
+         */
+        document.querySelector("form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const isValid = validateForm();
+            if (!isValid) return;
+
+            requestMenu();
+
+            const add = document.querySelector("aside");
+            add.textContent = "This car has been put out for sale";
+            add.style.color = "green";
+            add.style.fontSize = "25px";
+        });
+
+        /**
+         * Validates the car model input.
+         * 
+         * @param {string} model - The input value for the car model.
+         * @returns {string} An error message if invalid, otherwise an empty string.
+         */
+        function validateModel(model) {
+            if (!model) return "Please enter an input";
+            if (/[^a-zA-Z\s]/.test(model)) return "Please only type in letters";
+            if (model.length < 3) return "Model name should have a minimum length of 3.";
+            return "";
+        }
+
+        /**
+         * Validates the car make input.
+         * 
+         * @param {string} make - The input value for the car make.
+         * @returns {string} An error message if invalid, otherwise an empty string.
+         */
+        function validateMake(make) {
+            const regex = /^(Honda|Toyota|Ford|BMW|Mercedes Benz|Subaru)$/;
+            if (!make) return "Please enter the make";
+            if (!regex.test(make)) return "Please type in a brand that is Honda, Toyota, Ford, BMW, Mercedes Benz, or Subaru";
+            return "";
+        }
+
+        /**
+         * Validates the car year input.
+         * 
+         * @param {string} year - The input value for the car year.
+         * @returns {string} An error message if invalid, otherwise an empty string.
+         */
+        function validateYear(year) {
+            const regex = /^(200[5-9]|201[0-9]|202[0-4])$/;
+            if (!year) return "Please enter the year";
+            if (!regex.test(year)) return "Please type in a year between 2005–2024";
+            return "";
+        }
+
+        /**
+         * Validates the VIN (Vehicle Identification Number).
+         * 
+         * @param {string} vin - The input value for the VIN.
+         * @returns {string} An error message if invalid, otherwise an empty string.
+         */
+        function validateVin(vin) {
+            if (!vin) return "Please type in a Vehicle Identification Number";
+            if (vin.length !== 17) return "VIN must be exactly 17 characters long";
+            return "";
+        }
+
+        /**
+         * Validates all form fields and displays relevant error messages.
+         * 
+         * @returns {boolean} True if all fields are valid, false otherwise.
+         */
+        function validateForm() {
+            const modelInput = document.getElementById("model");
+            const makeInput = document.getElementById("make");
+            const yearInput = document.getElementById("year");
+            const vinInput = document.getElementById("vin");
+
+            const modelError = document.getElementById("modelError");
+            const makeError = document.getElementById("makeError");
+            const yearError = document.getElementById("yearError");
+            const vinError = document.getElementById("vinError");
+
+            modelError.textContent = "";
+            makeError.textContent = "";
+            yearError.textContent = "";
+            vinError.textContent = "";
+
+            let isValid = true;
+
+            const modelValidation = validateModel(modelInput.value.trim());
+            if (modelValidation) {
+                modelError.textContent = modelValidation;
+                modelError.style.color = "red";
+                isValid = false;
+            }
+
+            const makeValidation = validateMake(makeInput.value.trim());
+            if (makeValidation) {
+                makeError.textContent = makeValidation;
+                makeError.style.color = "red";
+                isValid = false;
+            }
+
+            const yearValidation = validateYear(yearInput.value.trim());
+            if (yearValidation) {
+                yearError.textContent = yearValidation;
+                yearError.style.color = "red";
+                isValid = false;
+            }
+
+            const vinValidation = validateVin(vinInput.value.trim());
+            if (vinValidation) {
+                vinError.textContent = vinValidation;
+                vinError.style.color = "red";
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        /**
+         * Sends a POST request to an external API with sample form data.
+         * Handles success and error logging.
+         */
+        function requestMenu() {
+            const API_URL = "https://webhook-test.com/3e35cc2dc6a63cd943950ae8f81081d0";
+            const data = new FormData();
+            data.append("key1", "value1");
+            data.append("key2", "value2");
+
+            fetch(API_URL, { method: "POST", body: data })
+                .then(res => {
+                    if (!res.ok) throw new Error("Network error");
+                    return res.json();
+                })
+                .then(data => {
+                    console.log("Success:", data);
+                })
+                .catch(err => {
+                    console.error("Error:", err);
+                });
+        }
+
+    </script>
+</body>
+
 </html>

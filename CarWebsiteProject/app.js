@@ -4,17 +4,19 @@
 const express = require('express');
 const app = express();
 
-// ***
-// This are the route handlers
-// You can add many more here
+/**
+ * put /posts after link
+ *
+ * @param {import('express').Request} req - Incoming request object
+ * @param {import('express').Response} res - Response object
+ * @tag {type} parameterName - description
+ */
 app.get('/posts', function (req, res) {
   res.type("text").send("Yay it works");
 });
 // ***
 
-app.get('/curry', function (req, res) {
-  res.type("text").send("Please work thanks!");
-});
+
 // This is the server listener
 app.listen(8080);
 console.log("Server is running on port 8080");

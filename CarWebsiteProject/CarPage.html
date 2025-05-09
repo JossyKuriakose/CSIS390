@@ -1,30 +1,386 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Car Page</title>
-    </head>
 
-    <nav>
-        <ul>
-            <li>Home</li>
-            <li>About</li>
-        </ul>
-    </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="universal.css">
+  <title>Car Page</title>
 
-    <body>
-        <div>
-            <button id = "back">Back</button>
-        </div>
-        <div>
-            <button id = "next">Next</button>
-        </div>
-        <!-- Add all the cars in a card if the user didn't select any criteria-->
+  <style>
+    #scroll-progress {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      height: 10px;
+      background-color: gold;
+      /* Bootstrap primary blue */
+      width: 0%;
+      z-index: 9999;
+      transition: width 0.2s ease-out;
+    }
 
-        <!-- Disable buy buttons of those cars user didn't select the criteria for-->
+    .card {
+      width: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      background-color: white;
+      margin: 20px;
+      font-family: sans-serif;
+    }
 
-        <!-- Also put a gray background color of those cards the user didn't select-->
-        <!-- Potentially 20 cars in total-->
-    </body>
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card-content {
+      padding: 15px;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .card button {
+      margin-top: 10px;
+      padding: 10px 16px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #0056b3;
+    }
+
+    section {
+      padding-top: 35px;
+      margin-right: 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 24px;
+      align-items: center;
+      padding-left: 150px;
+      padding-top: 30px;
+    }
+
+    article {
+      display: flex;
+      gap: 130px;
+    }
+
+    #back {
+      margin-top: 75px;
+      background-color: blue;
+      color: white;
+      width: 150px;
+      height: 50px;
+      font-size: large;
+      border-radius: 25px;
+      margin-left: 10px;
+    }
+  </style>
+</head>
+
+<nav>
+  <ul>
+    <li><a href="Home.html" class="invisible-link">Home</a></li>
+    <li><a href="About.html" class="invisible-link">About</a></li>
+    <li><a href="Saved.html" class="invisible-link">Saved</a></li>
+  </ul>
+</nav>
+
+<body>
+
+  <div id="scroll-progress"></div>
+
+  <div>
+    <button onclick="window.location.href='selection.html'" id="back">&lt; Back</button>
+  </div>
+  <!-- Add all the cars in a card if the user didn't select any criteria-->
+  <section>
+    <div class="card">
+      <img src="2018crv.jpg" alt="Car Image">
+      <div class="card-content">
+        <h3>2018 Honda CRV</h3>
+        <p>Total Mileage: 100200 Miles </p>
+        <p>Accidents: 1 minor </p>
+        <p>Number of Owners: 1</p>
+        <p>Price: $18000</p>
+        <article>
+          <button class="buy-btn" data-name="2018 Honda CRV" data-image="2018crv.jpg"
+            onclick="window.location.href='CarBuy.html'">Buy</button>
+          <button class="save-btn" data-name="2018 Honda CRV" data-image="2018crv.jpg">Save</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="2019rav4.jpg" alt="Car Image">
+      <div class="card-content">
+        <h3>2019 Toyota Rav4</h3>
+        <p>Total Mileage: 80500 Miles</p>
+        <p>Accidents: None</p>
+        <p>Number of Owners: 1 </p>
+        <p>Price: $23000</p>
+        <article>
+          <button class="buy-btn" data-name="2019 Toyota Rav4" data-image="2019rav4.jpg"
+            onclick="window.location.href='CarBuy.html'">Buy</button>
+          <button class="save-btn" data-name="2019 Toyota Rav4" data-image="2019rav4.jpg">Save</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="2012maybach.jpg" alt="Car Image">
+      <div class="card-content">
+        <h3>2012 Mercedes Benz Maybach</h3>
+        <p>Total Mileage: 150000 Miles</p>
+        <p>Accidents: 1 Major</p>
+        <p>Number of Owners: 2</p>
+        <p>Price: $11000</p>
+        <article>
+          <button class="buy-btn" data-name="2012 Mercedes Benz Mayback" data-image="2012maybach.jpg"
+            onclick="window.location.href='CarBuy.html'">Buy</button>
+          <button class="save-btn" data-name="2012 Mercedes Benz Maybach" data-image="2012maybach.jpg">Save</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="2012camry.jpg" alt="Car Image">
+      <div class="card-content">
+        <h3>2012 Toyota Camry</h3>
+        <p>Total Mileage: 165000 Miles</p>
+        <p>Accidents: None</p>
+        <p>Number of Owners: 3</p>
+        <p>Price: $7900</p>
+        <article>
+          <button class="buy-btn" data-name="2012 Toyota Camry" data-image="2012camry.jpg"
+            onclick="window.location.href='CarBuy.html'">Buy</button>
+          <button class="save-btn" data-name="2012 Toyota Camry" data-image="2012camry.jpg">Save</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="2025outback.jpg" alt="Car Image">
+      <div class="card-content">
+        <h3>2015 Subaru Outback</h3>
+        <p>Total Mileage: 92000 Miles</p>
+        <p>Accidents: 1 Minor</p>
+        <p>Number of Owners: 2</p>
+        <p>Price: $16000</p>
+        <article>
+          <button class="buy-btn" data-name="2015 Subaru Outback" data-image="2025outback.jpg"
+            onclick="window.location.href='CarBuy.html'">Buy</button>
+          <button class="save-btn" data-name="2015 Subaru Outback" data-image="2025outback.jpg">Save</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="2010fusion.jpg" alt="Car Image">
+      <div class="card-content">
+        <h3>2010 Ford Fusion</h3>
+        <p>Total Mileage: 132500</p>
+        <p>Accidents: None</p>
+        <p>Number of Owners: 1</p>
+        <p>Price: $6000</p>
+        <article>
+          <button class="buy-btn" data-name="2010 Ford Fusion" data-image="2010fusion.jpg"
+            onclick="window.location.href='CarBuy.html'">Buy</button>
+          <button class="save-btn" data-name="2010 Ford Fusion" data-image="2010fusion.jpg">Save</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="2023xseries.jpg" alt="Car Image">
+      <div class="card-content">
+        <h3>2023 BMW X-Series</h3>
+        <p>Total Mileage: 36200 Miles</p>
+        <p>Accidents: 1 minor</p>
+        <p>Number of Owners: 1 </p>
+        <p>Price: $32000</p>
+        <article>
+          <button class="buy-btn" data-name="2023 BMW X-Series" data-image="2023xseries.jpg"
+            onclick="window.location.href='CarBuy.html'">Buy</button>
+          <button class="save-btn" data-name="2023 BMW X-Series" data-image="2023xseries.jpg">Save</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="2008civic.jpg" alt="Car Image">
+      <div class="card-content">
+        <h3>2022 Dodge Charger</h3>
+        <p>Total Mileage: 50,000 Miles</p>
+        <p>Accidents: 1 minor </p>
+        <p>Number of Owners: 1 owner </p>
+        <p>Price: $36000</p>
+        <article>
+          <button class="buy-btn" data-name="2008 Honda Civic" data-image="2008civic.jpg"
+            onclick="window.location.href='CarBuy.html'">Buy</button>
+          <button class="save-btn" data-name="2008 Honda Civic" data-image="2008civic.jpg">Save</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="2010corolla.jpg" alt="Car Image">
+      <div class="card-content">
+        <h3>2010 Toyota Siena</h3>
+        <p>Total Mileage: 90000 Miles</p>
+        <p>Accidents: None</p>
+        <p>Number of Owners: 1</p>
+        <p>Price: $13000</p>
+        <article>
+          <button class="buy-btn" data-name="2010 Toyota Corolla" data-image="2010corolla.jpg"
+            onclick="window.location.href='CarBuy.html'">Buy</button>
+          <button class="save-btn" data-name="2010 Toyota Corolla" data-image="2010corolla.jpg">Save</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="2010civiccoupe.jpg" alt="Car Image">
+      <div class="card-content">
+        <h3>2012 Honda Civic Coupe</h3>
+        <p>Total Mileage: 102000 miles</p>
+        <p>Accidents: None </p>
+        <p>Number of Owners: 2</p>
+        <p>Price: $11000</p>
+        <article>
+          <button class="buy-btn" data-name="2012 Honda CRV" data-image="2010civiccoupe.jpg"
+            onclick="window.location.href='CarBuy.html'">Buy</button>
+          <button class="save-btn" data-name="2012 Honda CRV" data-image="2010civiccoupe.jpg">Save</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="2024corolla.jpg" alt="Car Image">
+      <div class="card-content">
+        <h3>2024 Toyota Corolla</h3>
+        <p>Total Mileage: 34000 miles</p>
+        <p>Accidents: 1 major accident, 1 minor accident</p>
+        <p>Number of Owners: 1</p>
+        <p>Price: $14300</p>
+        <article>
+          <button class="buy-btn" data-name="2014 Toyota Corolla" data-image="2024corolla.jpg"
+            onclick="window.location.href='CarBuy.html'">Buy</button>
+          <button class="save-btn" data-name="2014 Toyota Corolla" data-image="2024corolla.jpg">Save</button>
+        </article>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="2005f150.jpg" alt="Car Image">
+      <div class="card-content">
+        <h3>2005 Ford F-150</h3>
+        <p>Total Mileage: 180000 miles</p>
+        <p>Accidents: 2 minor accident</p>
+        <p>Number of Owners: 3</p>
+        <p>Price: $5000</p>
+        <article>
+          <button class="buy-btn" data-name="2005 Ford F150" data-image="2005f150.jpg"
+            onclick="window.location.href='CarBuy.html'">Buy</button>
+          <button class="save-btn" data-name="2005 Ford F150" data-image="2005f150.jpg">Save</button>
+        </article>
+      </div>
+    </div>
+  </section>
+  <!-- Disable buy buttons of those cars user didn't select the criteria for-->
+
+  <!-- Also put a gray background color of those cards the user didn't select-->
+  <!-- Potentially 20 cars in total-->
+</body>
+
+<script>
+  /**
+   * Handles navbar visibility based on scroll position.
+   * Shows the navbar when user scrolls more than 50px.
+   */
+  window.addEventListener('scroll', function () {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+      navbar.style.top = '0';
+    } else {
+      navbar.style.top = '-60px';
+    }
+  });
+
+  /**
+   * Updates a scroll progress bar as user scrolls the page.
+   */
+  window.addEventListener('scroll', function () {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+  });
+
+  /**
+   * Handles saving of car information when save buttons are clicked.
+   * Prevents duplicates using car name as identifier.
+   */
+  document.querySelectorAll(".save-btn").forEach(button => {
+    button.addEventListener("click", function () {
+      const card = this.closest(".card");
+
+      /** @type {{name: string, image: string, mileage: string, accidents: string, owners: string, price: string}} */
+      const car = {
+        name: this.dataset.name,
+        image: this.dataset.image,
+        mileage: card.querySelector("p:nth-of-type(1)")?.textContent || "",
+        accidents: card.querySelector("p:nth-of-type(2)")?.textContent || "",
+        owners: card.querySelector("p:nth-of-type(3)")?.textContent || "",
+        price: card.querySelector("p:nth-of-type(4)")?.textContent || ""
+      };
+
+      /** @type {Array<Object>} */
+      let savedCars = JSON.parse(localStorage.getItem("savedCars")) || [];
+
+      // Avoid duplicate saves
+      if (!savedCars.some(c => c.name === car.name)) {
+        savedCars.push(car);
+        localStorage.setItem("savedCars", JSON.stringify(savedCars));
+        alert("Car saved!");
+        button.textContent = "Saved";
+        button.style.backgroundColor = "green";
+      } else {
+        alert("Car already saved!");
+      }
+    });
+  });
+
+  /**
+   * Handles "Buy" button click.
+   * Saves selected car to localStorage and redirects to summary page.
+   */
+  document.querySelectorAll(".buy-btn").forEach(button => {
+    button.addEventListener("click", function () {
+      const card = this.closest(".card");
+
+      /** @type {{name: string, image: string, mileage: string, accidents: string, owners: string, price: string}} */
+      const car = {
+        name: this.dataset.name,
+        image: this.dataset.image,
+        mileage: card.querySelector("p:nth-of-type(1)")?.textContent || "",
+        accidents: card.querySelector("p:nth-of-type(2)")?.textContent || "",
+        owners: card.querySelector("p:nth-of-type(3)")?.textContent || "",
+        price: card.querySelector("p:nth-of-type(4)")?.textContent || ""
+      };
+
+      localStorage.setItem("currentBuy", JSON.stringify(car));
+      window.location.href = "CarBuy.html";
+    });
+  });
+</script>
+
 </html>

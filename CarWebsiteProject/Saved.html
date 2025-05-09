@@ -1,21 +1,155 @@
 <!DOCTYPE html>
 <html>
-    <head>
-       <title>Home Page</title>
-       
-       <style>
 
-       </style>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <nav>
-        <ul>
-            <li>Home</li>
-            <li>About</li>
-        </ul>
-    </nav>
-    <body>
-        <h1>Saved Searches</h1>
-    </body>
-    <script></script>
+    <link rel="stylesheet" href="universal.css">
+    <title>Saved Page</title>
+
+    <style>
+        #scroll-progress {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 10px;
+            background-color: gold;
+            /* Bootstrap primary blue */
+            width: 0%;
+            z-index: 9999;
+            transition: width 0.2s ease-out;
+        }
+
+        .card {
+            width: 300px;
+            border: 1px solid #ccc;
+            padding: 12px;
+            margin: 10px;
+            border-radius: 15px;
+            background-color: white;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: burlywood;
+        }
+
+        article {
+            display: flex;
+            gap: 100px;
+        }
+    </style>
+</head>
+
+<nav>
+    <ul>
+        <li><a href="Home.html" class="invisible-link">Home</a></li>
+        <li><a href="About.html" class="invisible-link">About</a></li>
+        <li><a href="Saved.html" class="invisible-link">Saved</a></li>
+    </ul>
+</nav>
+
+<body>
+    <h1>Saved Searches</h1>
+    <div id="scroll-progress"></div>
+    <div class="cards-container" id="savedCardsContainer"></div>
+</body>
+<script>
+    /**
+     * Toggles the visibility of the navigation bar based on the scroll position.
+     * Shows the navbar if the page is scrolled more than 50px down.
+     */
+    window.addEventListener('scroll', function () {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.style.top = '0';
+        } else {
+            navbar.style.top = '-60px';
+        }
+    });
+
+    /**
+     * Updates a scroll progress bar as the user scrolls down the page.
+     */
+    window.addEventListener('scroll', function () {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        document.getElementById('scroll-progress').style.width = scrollPercent + '%';
+    });
+
+    /**
+     * Loads saved cars from localStorage and displays them as cards on the page.
+     * If no cars are saved, it shows a message instead.
+     */
+    function loadSavedCars() {
+        /** @type {Array<{name: string, image: string, mileage: string, accidents: string, owners: string}>} */
+        const savedCars = JSON.parse(localStorage.getItem("savedCars")) || [];
+        const container = document.getElementById("savedCardsContainer");
+        container.innerHTML = "";
+
+        if (savedCars.length === 0) {
+            container.innerHTML = "<p>No saved cars.</p>";
+            container.style.fontSize = "30px";
+            container.style.paddingLeft = "500px";
+            return;
+        }
+
+        savedCars.forEach((car, index) => {
+            const card = document.createElement("div");
+            card.className = "card";
+            card.innerHTML = `
+            <img src="${car.image}" alt="Car Image">
+            <h3>${car.name}</h3>
+            <p>${car.mileage}</p>
+            <p>${car.accidents}</p>
+            <p>${car.owners}</p>
+            <article>
+                <button class="buy-btn" onclick="window.location.href='CarBuy.html'">Buy</button>
+                <button class="unsave-btn" onclick="unsaveCar(${index})">Unsave</button>
+            </article>
+        `;
+            container.appendChild(card);
+        });
+    }
+
+    /**
+     * Removes a saved car from localStorage based on its index and refreshes the view.
+     * @param {number} index - The index of the car to remove from the savedCars list.
+     */
+    function unsaveCar(index) {
+        let savedCars = JSON.parse(localStorage.getItem("savedCars")) || [];
+        savedCars.splice(index, 1);
+        localStorage.setItem("savedCars", JSON.stringify(savedCars));
+        loadSavedCars(); // Refresh the list after removal
+    }
+
+    /**
+     * Automatically load and display saved cars when the page is loaded.
+     */
+    window.onload = loadSavedCars;
+</script>
+
 </html>

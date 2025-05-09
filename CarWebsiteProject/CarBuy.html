@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="universal.css">
+    <title>Saved Page</title>
+
+    <style>
+        .card {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 15px;
+            background-color: white;
+            margin-left: 450px;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 10px 16px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: burlywood;
+        }
+
+        article {
+            display: flex;
+            gap: 100px;
+        }
+    </style>
+</head>
+
+<nav>
+    <ul>
+        <li><a href="Home.html" class="invisible-link">Home</a></li>
+        <li><a href="About.html" class="invisible-link">About</a></li>
+        <li><a href="Saved.html" class="invisible-link">Saved</a></li>
+    </ul>
+</nav>
+
+<body>
+    <div>
+        <button onclick="window.location.href='selection.html'" id="back">&lt; Back</button>
+    </div>
+    <div class="cards-container" id="savedCardsContainer"></div>
+</body>
+
+<script>
+
+    /**
+     * Loads the currently selected car from localStorage and displays it.
+     * If no car is selected, a message is shown instead.
+     */
+    function loadCar() {
+        /** @type {{name: string, image: string, mileage: string, accidents: string, owners: string, price: string} | null} */
+        const car = JSON.parse(localStorage.getItem("currentBuy"));
+        const container = document.getElementById("savedCardsContainer");
+        container.innerHTML = "";
+
+        if (!car) {
+            container.innerHTML = "<p>No car selected for purchase.</p>";
+            return;
+        }
+
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+        <img src="${car.image}" alt="Car Image">
+        <h3>${car.name}</h3>
+        <p>${car.mileage}</p>
+        <p>${car.accidents}</p>
+        <p>${car.owners}</p>
+        <p>${car.price}</p>
+        <article>
+            <button onclick="confirmPurchase('${car.name}')">Confirm Purchase</button>
+            <button onclick="cancelPurchase()">Cancel</button>
+        </article>
+    `;
+        container.appendChild(card);
+    }
+
+    /**
+     * Displays a confirmation alert for the selected car purchase.
+     * @param {string} name - The name of the car being purchased.
+     */
+    function confirmPurchase(name) {
+        alert("You confirmed the purchase of: " + name);
+        // Add logic here for finalizing the purchase
+    }
+
+    /**
+     * Cancels the current car purchase by clearing it from localStorage
+     * and redirecting the user back to the car listing page.
+     */
+    function cancelPurchase() {
+        localStorage.removeItem("currentBuy");
+        window.location.href = "CarPage.html";
+    }
+
+    /**
+     * Automatically loads the selected car when the page finishes loading.
+     */
+    window.onload = loadCar;
+</script>
+
+</html>

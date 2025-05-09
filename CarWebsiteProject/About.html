@@ -1,29 +1,79 @@
 <!DOCTYPE html>
 <html>
-    <head>
-       <title>About Us</title>
 
-       <style>
-        
-       </style>
-    </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="universal.css">
+  <title>About Us</title>
 
-    <body>
-      <h1>About US</h1>
+  <style>
+    
+    #paragraph {
+      background-color: aliceblue;
+      display: flex;
+      justify-content: center;
+      width:300px;
+      height: 170px;
+      margin-left: 490px;
+      padding:15px;
+    }
 
-      <!-- Flex box here-->
-      <div id = "paragraph">
-      <p>We are an car website in which users can buy and sell cars in the most convenient way possible.<br>
-        The whole process of buying and selling a car is way faster in this website than other car websites such as CarMax and CarGuru. 
-      Users can select a wide variety of cars that we offer on CarLord. <br>
+    #contact {
+      background-color: antiquewhite;
+      display: flex;
+      justify-content: center;
+      width:300px;
+      height: 90px;
+      margin-left:490px;
+      margin-top: 20px;
+      padding:15px;
+    }
+
+    h1 {
+      display: flex;
+      justify-content: center;
+    }
+
+    body {
+      background-color: azure
+    }
+
+    #about{
+      padding-top:60px;
+    }
+  </style>
+</head>
+
+<body style="background-image:url('road-trip.jpg'); background-size: cover; 
+             background-repeat: no-repeat; background-position: center; margin: 0; height: 100vh;">
+  <nav>
+    <ul>
+      <li><a href="Home.html" class="invisible-link">Home</a></li>
+      <li><a href="About.html" class="invisible-link">About</a></li>
+      <li><a href="Saved.html" class="invisible-link">Saved</a></li>
+    </ul>
+  </nav>
+  <article id="about">
+    <h1>About US</h1>
+  </article>
+  <article>
+    <div id="paragraph">
+      <p>CarWizard is a car website in which users can buy and sell cars in the most convenient way possible.<br>
+        The whole process of buying and selling a car is way faster in this website than other car websites such as
+        CarMax
+        and CarGuru.
+        Users can select a wide variety of cars that we offer on CarLord. <br>
       </p>
-      </div>
+    </div>
+  </article>
 
-      <article id = "contact">
-         <p>If you have any questions, please contact me.<br>
-         Phone Number(Call or Text): (516) 399-1212
-         Email: j29kuri@siena.edu
-         </p>
-      </article>
-    </body>
+  <article id="contact">
+    <p>If you have any questions, please contact me.<br>
+      Phone Number(Call or Text): (516) 399-1212
+      Email: j29kuri@siena.edu
+    </p>
+  </article>
+</body>
+
 </html>
